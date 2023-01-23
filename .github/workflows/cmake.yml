@@ -33,20 +33,15 @@ jobs:
       working-directory: ${{github.workspace}}
       run: conan install . --install-folder build --build=missing
 
-#     - name: Configure CMake
-#       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-#       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-#       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
     - name: Cmake Configuration
       working-directory: ${{github.workspace}}/build
       run: cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-    - name: Cmake Build
+    - name: Cmake Build Project
       working-directory: ${{github.workspace}}/build
       run: cmake --build .
 
-    - name: Test
+    - name: Testing Using GTEST
       working-directory: ${{github.workspace}}/build
       # Running tests using the package called gtest, which we imported using conan
       run: GTEST_COLOR=1 ctest --verbose
