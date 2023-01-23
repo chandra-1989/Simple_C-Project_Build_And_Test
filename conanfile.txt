@@ -1,0 +1,7 @@
+[requires]
+zlib/1.2.13
+gtest/1.8.1
+
+[generators]
+CMakeDeps
+CMakeToolchain
