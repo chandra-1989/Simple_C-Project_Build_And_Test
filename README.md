@@ -23,3 +23,6 @@ Open this project in Visual Studio Code and run the below commands on its termin
 
 **cd builds**
 **GTEST_COLOR=1 ctest --verbose**
+
+
+**GITHUB ACTION** is also enabled for this project where it will start a job whenever we push a change :) 
